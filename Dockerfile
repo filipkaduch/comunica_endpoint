@@ -21,4 +21,6 @@ EXPOSE 3000
 COPY /database/malware.owl /app/malware.owl
 
 # Start the SPARQL endpoint
-CMD ["npm", "run", "sparql", "--", "--port", "3000", "--config", "config/config.json"]
+CMD ["sh", "-c", "cd /database && npm install -g @comunica/query-sparql-file && comunica-sparql-file-http ./malware.owl ./cve_gen/CVE-2000-owl.owl ./cve_gen/OVAL_ios.owl -w 6"]
+
+
