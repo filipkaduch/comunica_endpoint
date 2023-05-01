@@ -23,7 +23,7 @@ COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
 
 RUN npm install
 # Start the SPARQL endpoint
-CMD ["node", "/app/server.js"]
+CMD ["node", "server.js"]
 # CMD ["comunica-sparql-file-http", "./malware.owl", "./cve_gen/CVE-2000-owl.owl", "-w", "6"]
 
 
