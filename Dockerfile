@@ -21,9 +21,12 @@ EXPOSE 3000
 COPY /database/malware.owl /app/malware.owl
 COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
 
+WORKDIR /app/server
+COPY server/package*.json ./
 RUN npm install
+COPY server/server.js ./
 # Start the SPARQL endpoint
-CMD ["node", "server.js"]
+CMD ["node", "/app/server.js"]
 # CMD ["comunica-sparql-file-http", "./malware.owl", "./cve_gen/CVE-2000-owl.owl", "-w", "6"]
 
 
