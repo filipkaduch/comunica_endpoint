@@ -23,6 +23,7 @@ COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
 
 WORKDIR /app/server
 COPY server/package*.json ./
+RUN npm install
 RUN npm install -g @comunica/query-sparql-file
 RUN npm install @comunica/actor-init-sparql --save
 COPY server/server.js /app/server.js
