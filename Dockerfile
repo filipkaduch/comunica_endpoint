@@ -22,6 +22,7 @@ COPY /database/malware.owl /app/malware.owl
 COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
 
 # Start the SPARQL endpoint
-CMD ["comunica-sparql-file-http ./malware.owl ./cve_gen/CVE-2000-owl.owl -w 6"]
+CMD ["comunica-sparql-file-http", "./malware.owl", "./cve_gen/CVE-2000-owl.owl", "-w", "6"]
+
 
 
