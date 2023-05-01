@@ -8,4 +8,4 @@ COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
 
 EXPOSE 3000
 
-CMD java -server -Xmx4g -jar blazegraph.jar &
+CMD ["java", "-server", "-Xmx4g", "-jar", "blazegraph.jar"]
