@@ -1,35 +1,12 @@
-FROM node:14
+# Use the official Apache Jena Fuseki Docker image as base image
+FROM apache/jena-fuseki:3.17.0
 
-# Install dependencies
-RUN apt-get update && \
-    apt-get install -y git && \
-    rm -rf /var/lib/apt/lists/*
+# Copy your .ttl file to the container
+COPY /database/malware.owl /fuseki/databases/malware.owl
 
-# Clone the Comunica repository and install dependencies
-RUN git clone https://github.com/comunica/comunica.git /app
-WORKDIR /app
-RUN npm install -g @comunica/query-sparql-file
-RUN npm install @comunica/actor-init-sparql --save
-# Set up environment variables for Comunica
-ENV COMMUNICA_CONFIG='file:/app/packages/actor-init-sparql/config/config-default.json'
-ENV COMMUNICA_CONFIG_PATH='/app/packages/actor-init-sparql/config/'
+# Expose the Fuseki port
+EXPOSE 3030
 
-# Expose the SPARQL endpoint port
-EXPOSE 3000
-
-# Copy your ontology file to the container
-COPY /database/malware.owl /app/malware.owl
-COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
-
-WORKDIR /app/server
-COPY server/package*.json ./
-RUN npm install
-RUN npm install -g @comunica/query-sparql-file
-RUN npm install @comunica/actor-init-sparql --save
-COPY server/server.js /app/server.js
-# Start the SPARQL endpoint
-CMD ["node", "/app/server.js"]
-# CMD ["comunica-sparql-file-http", "./malware.owl", "./cve_gen/CVE-2000-owl.owl", "-w", "6"]
-
-
+# Start Fuseki with your data as the default dataset
+CMD ["fuseki-server", "--file=/fuseki/databases/malware.owl", "/malware.owl"]
 
