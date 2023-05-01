@@ -9,7 +9,7 @@ RUN apt-get update && \
 RUN git clone https://github.com/comunica/comunica.git /app
 WORKDIR /app
 RUN npm install -g @comunica/query-sparql-file
-
+RUN npm install @comunica/actor-init-sparql --save
 # Set up environment variables for Comunica
 ENV COMMUNICA_CONFIG='file:/app/packages/actor-init-sparql/config/config-default.json'
 ENV COMMUNICA_CONFIG_PATH='/app/packages/actor-init-sparql/config/'
