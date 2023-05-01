@@ -19,8 +19,9 @@ EXPOSE 3000
 
 # Copy your ontology file to the container
 COPY /database/malware.owl /app/malware.owl
+COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
 
 # Start the SPARQL endpoint
-CMD ["sh", "-c", "cd /database && npm install -g @comunica/query-sparql-file && comunica-sparql-file-http ./malware.owl ./cve_gen/CVE-2000-owl.owl ./cve_gen/OVAL_ios.owl -w 6"]
+CMD ["sh", "-c", "npm install -g @comunica/query-sparql-file && comunica-sparql-file-http ./malware.owl ./cve_gen/CVE-2000-owl.owl -w 6"]
 
 
