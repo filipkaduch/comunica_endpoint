@@ -8,7 +8,7 @@ RUN apt-get update && \
 # Clone the Comunica repository and install dependencies
 RUN git clone https://github.com/comunica/comunica.git /app
 WORKDIR /app
-RUN npm install
+RUN npm install -g @comunica/query-sparql-file
 
 # Set up environment variables for Comunica
 ENV COMMUNICA_CONFIG='file:/app/packages/actor-init-sparql/config/config-default.json'
@@ -22,6 +22,6 @@ COPY /database/malware.owl /app/malware.owl
 COPY /database/cve_gen/CVE-2000-owl.owl /app/cve_gen/CVE-2000-owl.owl
 
 # Start the SPARQL endpoint
-CMD ["sh", "-c", "npm install -g @comunica/query-sparql-file && comunica-sparql-file-http ./malware.owl ./cve_gen/CVE-2000-owl.owl -w 6"]
+CMD ["comunica-sparql-file-http ./malware.owl ./cve_gen/CVE-2000-owl.owl -w 6"]
 
 
