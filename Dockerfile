@@ -1,5 +1,5 @@
 # Use the official Apache Jena Fuseki Docker image as base image
-FROM apache/jena-fuseki:3.17.0
+FROM stain/jena-fuseki
 
 # Copy your .ttl file to the container
 COPY /database/malware.owl /fuseki/databases/malware.owl
