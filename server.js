@@ -21,4 +21,9 @@ app.post('/query', async (req, res) => {
     }
 });
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.listen(port, () => console.log(`Comunica server listening on port ${port}`));
