@@ -18,11 +18,11 @@ WORKDIR /app
 COPY /database/malware.owl /app/databases/malware.owl
 
 # Install the Comunica SPARQL endpoint package
-RUN npm install -g @comunica/query-sparql @comunica/query-sparql-file
+RUN npm install -g @comunica/cli @comunica/actor-init-sparql @comunica/actor-http @comunica/actor-rdf-parse-file @comunica/actor-rdf-metadata @comunica/actor-sparql-parse @comunica/actor-sparql-serialize @comunica/actor-sparql-file-http
 
 # Expose the default SPARQL endpoint port (3000)
 EXPOSE 3000
 
 # Set the entrypoint command to start Comunica with the local RDF file
-CMD ["sh", "-c", "export PATH=$PATH:/usr/local/lib/node_modules/comunica-sparql-file/node_modules/.bin && query-sparql-file --port 3000 file:databases/malware.owl"]
+CMD comunica-sparql-file-http /app/databases/malware.owl http://0.0.0.0:3000/
 
