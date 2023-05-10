@@ -1,0 +1,15 @@
+{
+  "name": "comunica-owl-endpoint",
+  "version": "1.0.0",
+  "description": "Comunica OWL Endpoint",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "@comunica/actor-init-sparql": "^1.25.4",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.3"
+  }
+}
+
