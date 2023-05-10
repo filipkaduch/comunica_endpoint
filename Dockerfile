@@ -18,7 +18,7 @@ WORKDIR /app
 COPY /database/malware.owl /app/databases/malware.owl
 
 # Install the Comunica SPARQL endpoint package
-RUN npm install -g @comunica/actor-init-sparql @comunica/actor-init-sparql-file
+RUN npm install -g @comunica/query-sparql @comunica/query-sparql-file
 
 # Expose the default SPARQL endpoint port (3000)
 EXPOSE 3000
