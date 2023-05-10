@@ -24,4 +24,4 @@ RUN npm install -g @comunica/query-sparql @comunica/query-sparql-file
 EXPOSE 3000
 
 # Set the entrypoint command to start Comunica with the local RDF file
-CMD actor-init-sparql-file --port 3000 file:databases/malware.owl
+CMD query-sparql-file --port 3000 file:databases/malware.owl
