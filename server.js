@@ -1,4 +1,5 @@
-const newEngine = require('@comunica/actor-init-sparql').newEngine;
+const queryEngine = require('@comunica/query-sparql').QueryEngine;
+const newEngine = new queryEngine();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
