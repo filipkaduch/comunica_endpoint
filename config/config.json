@@ -1,4 +1,13 @@
 {
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/components/context.jsonld",
+    {
+      "@vocab": "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-init-sparql/^1.0.0/components/"
+    }
+  ],
+  "@id": "urn:comunica:my",
+  "@type": "Runner",
+  "import": "preset-query-operation:run",
   "sources": [
     {
       "type": "file",
