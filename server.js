@@ -20,7 +20,7 @@ app.get('/query', async (req, res) => {
         const bindings = await result.bindings();
         res.json(bindings.map(binding => binding.toObject()));
     } catch (err) {
-        res.status(400).send(err.message);
+        res.status(500).send(err.message);
     }
 });
 
