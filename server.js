@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/query', async (req, res) => {
+    console.log(req);
     const query = req.query.query;
+    console.log(query);
     try {
         const bindingsStream = await myEngine.queryBindings(query, { sources: [{ type: 'file', value: 'database/malware.owl' }, { type: 'file', value: 'database/cve_gen/CVE-2000-owl.owl' }] });
         const createValues = [];
