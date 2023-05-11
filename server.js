@@ -16,6 +16,7 @@ app.get('/query', async (req, res) => {
     console.log(query);
     try {
         const result = await myEngine.query(query, { sources: 'config/config.json' });
+        console.log(result);
         const bindings = await result.bindings();
         res.json(bindings.map(binding => binding.toObject()));
     } catch (err) {
