@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/query', async (req, res) => {
     console.log(req);
-    const query = req.body.query;
+    const query = req.query.query;
     console.log(query);
     try {
         const result = await myEngine.query(query, { sources: 'config/config.json' });
