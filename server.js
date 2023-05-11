@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/query', async (req, res) => {
+    console.log(req);
     const query = req.body.query;
     console.log(query);
     try {
@@ -22,13 +23,13 @@ app.get('/query', async (req, res) => {
     }
 });
 
+app.get('/', (req, res) => {
+    res.send('Comunica OWL Endpoint is running. Send SPARQL queries to the /query endpoint.');
+});
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
-});
-
-app.get('/', (req, res) => {
-    res.send('Comunica OWL Endpoint is running. Send SPARQL queries to the /query endpoint.');
 });
 
 app.listen(port, () => console.log(`Comunica server listening on port ${port}`));
