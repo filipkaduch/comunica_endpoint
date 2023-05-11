@@ -30,6 +30,7 @@ app.get('/query', async (req, res) => {
         });
 
         // Consume results as an array (easier)
+        const bindings = await bindingsStream.toArray();
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).send({results: {bindings: createValues}});
     } catch (err) {
