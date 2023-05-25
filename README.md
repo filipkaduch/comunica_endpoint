@@ -1,2 +1,2 @@
-# comunica_endpoint
+# owl_endpoint
 Host for ontology database
